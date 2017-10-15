@@ -5,12 +5,17 @@ from django.shortcuts import render
 from django.utils.encoding import smart_str
 import youtube_dl
 
-def converter(request):
-    return render(request, 'index.html', locals())
+
+# Create your views here.
+
+def index(request):
+    return render(request, 'index.html', {})
+
 
 def my_hook(d):
     if d['status'] == 'finished':
         print('Done downloading, now converting ...')
+
 
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -18,6 +23,7 @@ ydl_opts = {
     'noplaylist' : True,
     'progress_hooks': [my_hook],
 }
+
 
 def download(request):
     response = HttpResponseRedirect('/')
@@ -28,3 +34,15 @@ def download(request):
                 url,
                 download=False
             )
+
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+        with open(result['id'], 'rb') as file_data:
+            response = HttpResponse(file_data.read(),
+                                    content_type='audio/mpeg')
+            response['Content-Disposition'] = 'attachment; filename={}'.format(
+                smart_str(result['title']+'.mp3'))
+            response['Content-Length'] = os.path.getsize(result['id'])
+    # It's usually a good idea to set the 'Content-Length' header too.
+    # You can also set any other required headers: Cache-Control, etc.
+    return response

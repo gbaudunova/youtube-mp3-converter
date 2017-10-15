@@ -5,4 +5,4 @@ from . models import*
 class SubscriberForm(forms.ModelForm):
 
     class Meta:
-        fields = ('url')
+        fields = (url)

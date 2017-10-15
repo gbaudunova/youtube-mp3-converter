@@ -1,9 +1,11 @@
 from django.conf.urls import url
-from django.contrib import admin
-from converter import views
+from . import views
 
 urlpatterns = [
-
-    url(r'^', view=views.converter,name='converter'),
-    url(r'^download/', view=views.download,name='download'),
+    url(
+        regex=r'^$',view=views.index,name='index'
+    ),
+    url(
+        regex=r'^download/$',view=views.download,name='download'
+    ),
 ]
