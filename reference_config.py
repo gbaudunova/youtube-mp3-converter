@@ -1,4 +1,0 @@
-CHANNEL_ID="@crowddevs_channel"
-STUB_SEND_INTERVAL=10
-BOT_TOKEN="477027524:AAHjzfguxYlhM1KZDUUd8vW3oihd4MsKnx0"
-RESOURCES_DIR="resources"

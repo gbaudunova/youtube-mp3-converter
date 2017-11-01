@@ -1,5 +1,18 @@
+<<<<<<< HEAD
 /venv
 /config.py
 
 __pycache__
 *.pyc
+=======
+*.pyc
+*~
+__pycache__
+venv
+db.sqlite3
+/static
+.DS_Store
+.idea
+
+
+>>>>>>> d2f8eda1f1ed48e74caf276725522ca4cd49e371
