@@ -1,12 +1,11 @@
-<<<<<<< HEAD
-/venv
-/config.py
-__pycache__
-venv
-db.sqlite3
-/static
 .DS_Store
+db.sqlite3
 .idea
-
-
->>>>>>> d2f8eda1f1ed48e74caf276725522ca4cd49e371
+media/*
+*.__pycache__
+*.pyc
+*.pyo
+*.db
+*.
+/venv
+/static
